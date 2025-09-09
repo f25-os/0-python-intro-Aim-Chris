@@ -19,7 +19,7 @@ def write_file(fd, data):
 
 def process_text(text):
     text = text.lower()
-    words = re.findall(r'\b[a-z]+\b', text) #only letters
+    words = re.findall('\\b[a-z]+\\b', text) #only letters
     return words
 
 def main():
@@ -50,7 +50,7 @@ def main():
     sorted_words = sorted(word_count.items(), key=lambda x:(x[0]))
 
     #open output file (write, create if doesnt exist, truncate if exists)
-    output_fd = os.open(output_path, os.O_WRONLY| os.O_CREAT| os.O_TRUNC, 0o6444)
+    output_fd = os.open(output_path, os.O_WRONLY| os.O_CREAT| os.O_TRUNC, 0o644)
 
     #write output file
     for word, count in sorted_words:
